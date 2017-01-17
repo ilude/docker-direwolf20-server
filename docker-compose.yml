@@ -1,0 +1,28 @@
+# https://github.com/itzg/dockerfiles/tree/master/minecraft-server
+minecraft-server:
+  ports:
+    - "24464:25565"
+  volumes:
+    - /pool/minecraft/direwolf20/world:/srv/minecraft/world
+    - /pool/minecraft/direwolf20/banned-ips.json:/srv/minecraft/banned-ips.json
+    - /pool/minecraft/direwolf20/banned-players.json:/srv/minecraft/banned-players.json 
+    - /pool/minecraft/direwolf20/logs:/srv/minecraft/logs
+    - /pool/minecraft/direwolf20/ops.json:/srv/minecraft/ops.json 
+    - /pool/minecraft/direwolf20/usercache.json:/srv/minecraft/usercache.json 
+    - /pool/minecraft/direwolf20/whitelist.json:/srv/minecraft/whitelist.json 
+    - /pool/minecraft/direwolf20/server.properties:/srv/minecraft/server.properties 
+    - /pool/minecraft/direwolf20/config/JourneyMapServer:/srv/minecraft/config/JourneyMapServer 
+  environment:
+    EULA: 'TRUE'
+    WHITELIST: iliude,lexi_purple,connor_red,SLMaxwell68,maklar
+    OPS: ilude
+    MOTD: "iLude Direwolf Server"
+
+  image: direwolf-image
+
+  container_name: direwolf
+
+  tty: true
+  stdin_open: true
+  restart: always
+
